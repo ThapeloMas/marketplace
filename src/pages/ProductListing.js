@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../actions/ProductActions';
@@ -5,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 
 const ProductListing = () => {
   const dispatch = useDispatch();
-  const { products, loading } = useSelector((state) => state.product);
+  const { products = [], loading } = useSelector((state) => state.product || {});
 
   useEffect(() => {
     dispatch(fetchProducts());
